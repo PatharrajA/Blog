@@ -14,7 +14,7 @@ import ProfileComponent from './components/profilecomponent';
 import BlogComponent from './components/blogcomponent';
 
 import { isLoggedIn,session } from './services/actions/action';
-
+import Loader from './common/loader';
 var loggedIn = false;
 
 class App extends Component {
@@ -41,6 +41,8 @@ class App extends Component {
 
   render() {
     return (
+      <div>
+        <Loader />
       <Switch>
         <Route path="/login" component={LoginComponent} />
         <Route path='/register' component={RegisterComponent} />
@@ -48,6 +50,7 @@ class App extends Component {
         <PrivateRoute path='/profile' component={ProfileComponent} />
         <PrivateRoute path='/blog' component={BlogComponent} />
       </Switch>
+      </div>
     );
   }
 }
@@ -60,4 +63,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   )} />
 );
 
-export default connect()(withCookies(App));
+const mapStateToProps = state => {
+  return {
+    ...state
+  };
+};
+
+export default connect(mapStateToProps)(withCookies(App));

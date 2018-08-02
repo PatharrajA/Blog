@@ -2,7 +2,8 @@ const initialState = {
     user: {},
     isLoggedIn: false,
     blog: [],
-    token: ""
+    token: "",
+    loader: false
 }
 
 export default (state = initialState, action) => {
@@ -31,6 +32,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 token: action.token
+            }
+        case 'SET_LOAD':
+            return {
+                ...state,
+                loader: action.load
             }
         default:
             break;
