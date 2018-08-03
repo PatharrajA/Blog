@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import service from '../services/commonservice';
 import {isLoggedIn,session,user,loader} from '../services/actions/action';
-
+import Logo from '../assets/image/logo.png';
 class RegisterComponent extends Component{
     state = {
         user:{
@@ -109,6 +109,7 @@ class RegisterComponent extends Component{
         return(
             <div className="container">
                 <div className="col-md-4 auth-container">
+                    <img src={Logo} alt="" />
                     <form onSubmit={this.register}>
                         <div className="form-group">
                             {this.state.nameError ? <label className="error">{this.state.errors.name}</label> :""}
@@ -123,11 +124,11 @@ class RegisterComponent extends Component{
                             <input type="password" className="form-control" placeholder="Password" name="password" value={this.state.user.password} onChange={this.handleInput} />
                         </div>
                         <div className="form-group">
-                            <button type="submit" className="btn btn-full">Register</button>
+                            <button type="submit" className="btn btn-block">Register</button>
                         </div>
                     </form>
                     <p>Already Have an Account ?</p>
-                    <Link from='/register' to='/login'>Register</Link>
+                    <Link from='/register' to='/login'>Login</Link>
                 </div>
             </div>
         )

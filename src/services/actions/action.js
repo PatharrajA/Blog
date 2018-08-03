@@ -28,3 +28,9 @@ export function loader(load) {
         load
     }
 }
+
+export function logout() {
+    return {
+        type: "SET_LOGOUT"
+    }
+}

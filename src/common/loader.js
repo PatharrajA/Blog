@@ -15,8 +15,8 @@ class Loader extends Component{
     }
 }
 const mapStateToProps = state =>{
-    return {
-        loader:state.loader
+    return{
+        ...state
     }
 }
 

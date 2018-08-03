@@ -15,6 +15,7 @@ import BlogComponent from './components/blogcomponent';
 
 import { isLoggedIn,session } from './services/actions/action';
 import Loader from './common/loader';
+import Navigation from './common/navigation';
 var loggedIn = false;
 
 class App extends Component {
@@ -43,6 +44,8 @@ class App extends Component {
     return (
       <div>
         <Loader />
+        { this.props.isLoggedIn ?  <Navigation /> : ""}
+       
       <Switch>
         <Route path="/login" component={LoginComponent} />
         <Route path='/register' component={RegisterComponent} />

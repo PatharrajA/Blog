@@ -26,7 +26,10 @@ export default (state = initialState, action) => {
         case 'SET_LOGOUT':
             return {
                 ...state,
-                isLoggedIn: false
+                isLoggedIn: false,
+                user: {},
+                token: "",
+                blog: []
             }
         case 'SET_SESSION':
             return {

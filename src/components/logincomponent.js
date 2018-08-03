@@ -1,10 +1,12 @@
 import React,{ Component } from 'react';
-import { Link,Redirect } from 'react-router-dom';
-import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom';
+// import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
 
 import service from '../services/commonservice';
 import {isLoggedIn,session,user,loader} from '../services/actions/action';
+import Logo from '../assets/image/logo.png';
+
 class LoginComponent extends Component{
     state={
         user:{
@@ -101,7 +103,8 @@ class LoginComponent extends Component{
     render(){
         return(
             <div className="container">
-               <div className="col-md-4">
+               <div className="col-md-4 auth-container">
+                    <img src={Logo} alt="" />
                     <form onSubmit={this.login}>
                         <div className="form-group">
                             {this.state.emailError ? <label className="error">{this.state.errors.email}</label>:""}
@@ -112,14 +115,12 @@ class LoginComponent extends Component{
                             <input type="password" className="form-control" placeholder="Password" name="password" value={this.state.user.password} onChange={this.handleInput}/>
                         </div>
                         <div className="form-group">
-                            <button type="submit" className="btn btn-full">LOGIN</button>
+                            <button type="submit" className="btn btn-block">LOGIN</button>
                         </div>
                     </form>
                     <p>OR</p>
                     <Link from='/login' to='/register'>Register</Link>
                </div>
-
-               {this.state.emailError}
             </div>
         )
     }
